@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <script  type="text/javascript">
+    // Create a request variable and assign a new XMLHttpRequest object to it.
+    var request = new XMLHttpRequest();
+
+    // Open a new connection, using the GET request on the URL endpoint
+    request.open('GET', 'http://localhost:3000/api/routes', true);
+
+    request.onload = function() {
+      // Begin accessing JSON data here
+      var data = JSON.parse(this.response);
+
+      if (request.status >= 200 && request.status < 400) {
+        data.forEach(item => {
+          // Log each movie's title
+          console.log(item.name, item.message);
+        });
+      } else {
+        console.log('error')
+      }
+    }
+
+
+
+
+    // Send request
+    request.send();
+
+    </script>
+  </body>
+</html>
